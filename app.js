@@ -1,13 +1,13 @@
 const express= require('express');
+const path=require('path');
 const app=express();
+
+//Middlewares
+app.use(express.static('public'));
+
 const port =3000;
 app.get('/',(req,res)=>{
-    const photo={
-        id:1,
-        name: "photo",
-        description:"description"
-    }
-    res.send(photo);
+    res.sendFile(path.resolve(__dirname,"temp/index.html"))
 })
 app.listen(port,()=>{
     console.log(`Server started at ${port}`);
